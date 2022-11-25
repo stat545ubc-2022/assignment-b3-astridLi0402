@@ -6,6 +6,7 @@ library(tidyverse)
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 print(str(bcl))
 ui <- fluidPage(
+  # Logo Image
   titlePanel(title=p(img(src="no.jpeg",  height="70em", width="70em", align="right"), "Liquor Store Overview")),
   tabsetPanel(
     tabPanel("Filtered Overview", sidebarLayout(
@@ -17,19 +18,23 @@ ui <- fluidPage(
                      choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
                      selected = "WINE"),
         uiOutput("countryOutput"),
+        # Feature 1
         sliderInput("sweetnessInput", "Switness", min = 0, max = 10,
                     value = c(1, 5)),
+        # Feature 4 -> if Alcohol content is less than 15 it is considered to be not intensive
         numericInput("acInput", "Alcohol Content <=", 15, 1, 50),
         conditionalPanel(
           "input.acInput <= 20",
           "Mild Lover!",
         ),
       ),
+      # Feature 2
       mainPanel(plotOutput("coolplot"),
                 br(), br(),
                 downloadLink('downloadData', 'Click to download the table'),
                 tableOutput("results")),
     )),
+    # Feature 3
     tabPanel("Overview By Country", plotOutput("testplot"))
   )
   )
