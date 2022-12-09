@@ -9,16 +9,16 @@ ui <- fluidPage(
   # Logo Image
   titlePanel(title=p(img(src="no.jpeg",  height="70em", width="70em", align="right"), "Liquor Store Overview")),
   tabsetPanel(
-    tabPanel("Overview By Country",
+    tabPanel("App Overview",
              sidebarLayout(
                sidebarPanel(
                  h3("Introduction:"),
-                 h4("Here is an overview of the BC liquor data"),
-                 h4("This app aims to help you explore drinks in BC liquor store and help you find out what drink you may like"),
-                 h4("Feel free to use the second tab to explore and find out the drink you want"),
+                 p("Here is an overview of the BC liquor data"),
+                 p("This app aims to help you explore drinks in BC liquor stores and help you find out what drink you may like"),
+                 p("Feel free to use the second tab to explore and find out the drink you want"),
                  h3("Data Overview:"),
-                 h4("Total Drinks in record:" , nrow(bcl)),
-                 h4("Drinks are from" , n_distinct(bcl$Country), "different countries")
+                 p("Total Drinks in record:" , nrow(bcl)),
+                 p("Drinks are from" , n_distinct(bcl$Country), "different countries")
                ),
                # Feature 2
                mainPanel(br(),
